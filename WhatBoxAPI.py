@@ -24,17 +24,17 @@ class WhatBoxAPI:
 
     def storage_usage(self):
         r = self.mk.open('https://whatbox.ca/manage')
-        usage = re.search('<span class="usage_disk_test" title="(.+?) used">', r.text).group(1)
+        d_usage = re.search('<span class="usage_disk_test" title="(.+?) used">', r.text).group(1)
 
     def upload_usage(self):
         r = self.mk.open('https://whatbox.ca/manage')
-        usage = re.search('<span class="auto usage_traffic_text">(.+?)</span>', r.text).group(1)    
+        u_usage = re.search('<span class="auto usage_traffic_text">(.+?)</span>', r.text).group(1)    
 
     def traffic_reset_time(self):
         r = self.mk.open('https://whatbox.ca/manage')
-        usage = re.search('<span> "Traffic resets in: " <time datetime="(.+?)" title="(.+?)">', r.text).group(2)
+        traffic_t = re.search('<span> "Traffic resets in: " <time datetime="(.+?)" title="(.+?)">', r.text).group(2)
 
     def traffic_reset_distance(self):
         r = self.mk.open('https://whatbox.ca/manage')
-        usage = re.search('<span> "Traffic resets in: " <time datetime="(.+?)" title="(.+?)">(.+?)</time>', r.text).group(3)
+        traffic_d = re.search('<span> "Traffic resets in: " <time datetime="(.+?)" title="(.+?)">(.+?)</time>', r.text).group(3)
         
